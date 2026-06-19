@@ -112,7 +112,7 @@ def add_product():
 
     if request.method == 'POST':
 
-        product_name = request.form['product_name']
+        product_name = request.form['name']
         price = request.form['price']
         description = request.form['description']
 
