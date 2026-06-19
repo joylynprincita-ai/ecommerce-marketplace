@@ -2,20 +2,31 @@
 <html>
 <head>
     <title>Vendor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Vendor Dashboard</h1>
+<div class="container">
+    <div class="card">
 
-<h3>Login Successful</h3>
+        <h1>Vendor Dashboard</h1>
 
-<p>Welcome Vendor</p>
+        <p>Welcome Vendor 👋</p>
 
-<a href="/add-product">Add Product</a>
+        <br>
 
-<br><br>
+        <button onclick="window.location.href='/add-product'">
+            Add Product
+        </button>
 
-<a href="/view-products">View Products</a>
+        <br><br>
+
+        <button onclick="window.location.href='/view-products'">
+            View Products
+        </button>
+
+    </div>
+</div>
 
 </body>
 </html>

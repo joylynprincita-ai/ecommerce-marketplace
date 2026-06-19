@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Products</title>
+    <title>Available Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Available Products</h1>
+<div class="container">
 
-<table border="1">
+    <h1>Available Products</h1>
 
-<tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Description</th>
-</tr>
+    {% for product in products %}
+    <div class="product-card">
+        <h2>{{ product[2] }}</h2>
 
-{% for product in products %}
+        <p class="price">₹{{ product[3] }}</p>
 
-<tr>
-    <td>{{ product[0] }}</td>
-    <td>{{ product[2] }}</td>
-    <td>{{ product[3] }}</td>
-    <td>{{ product[4] }}</td>
-</tr>
+        <p>{{ product[4] }}</p>
+    </div>
+    {% endfor %}
 
-{% endfor %}
-
-</table>
+</div>
 
 </body>
 </html>

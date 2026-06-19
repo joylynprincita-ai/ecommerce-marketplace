@@ -2,14 +2,25 @@
 <html>
 <head>
     <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Customer Dashboard</h1>
+<div class="container">
+    <div class="card">
 
-<h3>Welcome Customer</h3>
+        <h1>Customer Dashboard</h1>
 
-<a href="/customer-products">Browse Products</a>
+        <p>Welcome Customer 👋</p>
+
+        <br>
+
+        <button onclick="window.location.href='/customer-products'">
+            Browse Products
+        </button>
+
+    </div>
+</div>
 
 </body>
 </html>

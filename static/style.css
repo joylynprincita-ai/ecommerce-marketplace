@@ -67,3 +67,26 @@ a{
 a:hover{
     text-decoration:underline;
 }
+.dashboard-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.dashboard-buttons button{
+    flex:1;
+}
+
+.product-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+}
+
+.price{
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+}
