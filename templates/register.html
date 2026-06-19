@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>User Registration</h1>
+<div class="container">
+    <div class="card">
 
-<form method="POST">
+        <h1>User Registration</h1>
 
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
+        <form method="POST">
 
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
+            <label>Name</label>
+            <input type="text" name="name" required>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
+            <label>Email</label>
+            <input type="email" name="email" required>
 
-    <label>Role:</label><br>
+            <label>Password</label>
+            <input type="password" name="password" required>
 
-    <select name="role">
-        <option value="Customer">Customer</option>
-        <option value="Vendor">Vendor</option>
-    </select>
+            <label>Role</label>
+            <select name="role">
+                <option value="Customer">Customer</option>
+                <option value="Vendor">Vendor</option>
+            </select>
 
-    <br><br>
+            <button type="submit">Register</button>
 
-    <button type="submit">Register</button>
+        </form>
 
-</form>
+        <br>
+
+        <a href="/login">Already have an account? Login</a>
+
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>E-Commerce Market</title>
+    <title>E-Commerce Marketplace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <h1>E-Commerce Market (Multi-Vendor)</h1>
+<div class="container">
 
-    <hr>
+    <div class="card">
 
-    <h2>Welcome to our Marketplace</h2>
+        <h1>E-Commerce Marketplace</h1>
 
-    <p>
-        Vendors can add products and customers can buy products.
-    </p>
+        <p>
+            Buy and sell products through our multi-vendor marketplace.
+        </p>
 
-    <a href="/register">Register</a>
-    <br><br>
+        <br>
 
-    <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        |
+        <a href="/login">Login</a>
+
+    </div>
+
+</div>
 
 </body>
 </html>
