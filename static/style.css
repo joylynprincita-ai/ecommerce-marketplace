@@ -90,3 +90,10 @@ a:hover{
     font-size:20px;
     font-weight:bold;
 }
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    resize:vertical;
+}
