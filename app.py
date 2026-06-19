@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import sqlite3
+import os
 
 app = Flask(__name__)
+app.secret_key = "ecommerce_secret_key"
 
 # Create Database
 def create_database():
@@ -88,6 +90,9 @@ def login():
 
         if user:
 
+            session['user_id'] = user[0]
+            session['role'] = user[4]
+
             if user[4] == "Vendor":
                 return redirect('/vendor-dashboard')
 
@@ -103,12 +108,19 @@ def login():
 # Vendor Dashboard
 @app.route('/vendor-dashboard')
 def vendor_dashboard():
+
+    if 'user_id' not in session:
+        return redirect('/login')
+
     return render_template('vendor_dashboard.html')
 
 
 # Add Product
 @app.route('/add-product', methods=['GET', 'POST'])
 def add_product():
+
+    if 'user_id' not in session:
+        return redirect('/login')
 
     if request.method == 'POST':
 
@@ -120,13 +132,13 @@ def add_product():
 
         conn.execute(
             "INSERT INTO products(vendor_id,name,price,description) VALUES(?,?,?,?)",
-            (1, product_name, price, description)
+            (session['user_id'], product_name, price, description)
         )
 
         conn.commit()
         conn.close()
 
-        return "Product Added Successfully!"
+        return redirect('/view-products')
 
     return render_template('add_product.html')
 
@@ -134,6 +146,9 @@ def add_product():
 # View Products
 @app.route('/view-products')
 def view_products():
+
+    if 'user_id' not in session:
+        return redirect('/login')
 
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
@@ -149,6 +164,9 @@ def view_products():
 @app.route('/delete-product/<int:id>')
 def delete_product(id):
 
+    if 'user_id' not in session:
+        return redirect('/login')
+
     conn = sqlite3.connect('database.db')
 
     conn.execute(
@@ -163,6 +181,10 @@ def delete_product(id):
 
 @app.route('/customer-dashboard')
 def customer_dashboard():
+
+    if 'user_id' not in session:
+        return redirect('/login')
+
     return render_template('customer_dashboard.html')
 
 
@@ -181,7 +203,13 @@ def customer_products():
         'customer_products.html',
         products=products
     )
-import os
+
+@app.route('/logout')
+def logout():
+
+    session.clear()
+
+    return redirect('/login')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
